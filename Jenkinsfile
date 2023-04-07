@@ -1,12 +1,14 @@
 pipeline {
 
-    agent any
-     stage {
+    agent any 
 
-        stage("git Checkout"){
-            steps {
+    stages {
+
+        stage("git checkout"){
+            
+            steps{
                 git branch: 'main', url: 'https://github.com/venkataprasanna45/demo-counter-app.git'
             }
-        }
-     }
+         }
+    }
 }
