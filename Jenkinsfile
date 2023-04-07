@@ -22,8 +22,8 @@ pipeline {
          stage("Integration testing"){
             
             steps{
-                sh'mvn verify-DskipunitTests'
+                sh'mvn verify -DskipunitTests'
             } 
     }
-}
+    } 
 }
