@@ -33,9 +33,12 @@ pipeline {
         }
         stage('static code analysis'){
             steps {
-                WithSonarQubeEnv(credentialsId:'sonar') {
-                   sh 'maven clean package sonar:sonar'
+                script{
+                    withSonarQubeEnv(credentialsId:'sonar') {
+                       sh 'maven clean package sonar:sonar'
 
+                }
+                
             }
           }
         }
