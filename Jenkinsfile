@@ -10,7 +10,7 @@ pipeline{
                 
                 script{
                     
-                    git branch: 'main', url: 'https://github.com/vikash-kumar01/mrdevops_javaapplication.git'
+                    git branch: 'main', url: 'https://github.com/venkataprasanna45/demo-counter-app.git'
                 }
             }
         }
@@ -64,7 +64,7 @@ pipeline{
                     
                     script{
                         
-                        waitForQualityGate abortPipeline: false, credentialsId: 'sonar-key'
+                       waitForQualityGate abortPipeline: false, credentialsId: 'sonar-key'
                     }
                 }
             }
