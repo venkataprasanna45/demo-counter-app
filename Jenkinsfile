@@ -12,16 +12,22 @@ pipeline {
             steps{
                 git branch: 'main', url: 'https://github.com/venkataprasanna45/demo-counter-app.git'
             }
-         }   
-        stage('UNIT testing'){
+        } 
+        stage('Static code analysis'){
             
             steps{
                 
                 script{
                     
-                    sh 'mvn test'
+                    withSonarQubeEnv(credentialsId: 'sonar-api') {
+                        
+                        sh 'mvn clean package sonar:sonar'
+                    }
+                   }
+                    
                 }
-            }
-        }    
+            } 
+
+           
     }
 }
