@@ -13,20 +13,17 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/venkataprasanna45/demo-counter-app.git'
             }
         } 
-        stage('Static code analysis'){
-            
-            steps{
-                
-                script{
-                    
-                    withSonarQubeEnv(credentialsId: 'sonar-api') {
-                        
-                        sh 'mvn clean package sonar:sonar'
-                    }
-                   }
-                    
-                }
-            } 
+        stage ('Build & JUnit Test') {
+            steps {
+                sh 'mvn install' 
+            }
+            post {
+               success {
+                    junit 'target/surefire-reports/**/*.xml'
+                }   
+            }
+        }
+    
 
            
     }
